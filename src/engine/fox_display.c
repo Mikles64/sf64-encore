@@ -82,10 +82,10 @@ void Display_DrawHelpAlert(void) {
         switch (sp7C) {
             case false:
                 if (gTeamHelpActor->sfxSource[0] > 0.0f) {
-                    sp78 = 20.0f;
+                    sp78 = 22.0f;
                     sp74 = M_PI / 2;
                 } else {
-                    sp78 = -20.0f;
+                    sp78 = -22.0f;
                     sp74 = -M_PI / 2;
                 }
                 Matrix_Push(&gGfxMatrix);
@@ -99,15 +99,15 @@ void Display_DrawHelpAlert(void) {
 
             case true:
                 Matrix_Push(&gGfxMatrix);
-                Matrix_Translate(gGfxMatrix, 20.0f, 0.0f, -50.0f, MTXF_APPLY);
+                Matrix_Translate(gGfxMatrix, 22.0f, 0.0f, -50.0f, MTXF_APPLY);
                 Matrix_RotateZ(gGfxMatrix, -M_PI / 2, MTXF_APPLY);
                 Matrix_Scale(gGfxMatrix, 0.03f, 0.03f, 0.03f, MTXF_APPLY);
                 Matrix_SetGfxMtx(&gMasterDisp);
                 gSPDisplayList(gMasterDisp++, aHelpAlertDL);
                 Matrix_Pop(&gGfxMatrix);
-                sp78 = -20.0f;
+                sp78 = -22.0f;
                 Matrix_Push(&gGfxMatrix);
-                Matrix_Translate(gGfxMatrix, -20.0f, 0.0f, -50.0f, MTXF_APPLY);
+                Matrix_Translate(gGfxMatrix, -22.0f, 0.0f, -50.0f, MTXF_APPLY);
                 Matrix_RotateZ(gGfxMatrix, M_PI / 2, MTXF_APPLY);
                 Matrix_Scale(gGfxMatrix, 0.03f, 0.03f, 0.03f, MTXF_APPLY);
                 Matrix_SetGfxMtx(&gMasterDisp);
@@ -121,17 +121,17 @@ void Display_DrawHelpAlert(void) {
                 RCP_SetupDL(&gMasterDisp, SETUPDL_76);
                 gDPSetPrimColor(gMasterDisp++, 0x00, 0x00, 255, 255, 0, 255);
                 if (sp78 < 0.0f) {
-                    Graphics_DisplaySmallText(43 - 19, 106, 1.0f, 1.0f, "HELP!!");
+                    Graphics_DisplaySmallText(14, 106, 1.0f, 1.0f, "HELP!!");
                 } else {
-                    Graphics_DisplaySmallText(SCREEN_WIDTH - 43 - 19, 106, 1.0f, 1.0f, "HELP!!");
+                    Graphics_DisplaySmallText(SCREEN_WIDTH - 14 - 44, 106, 1.0f, 1.0f, "HELP!!");
                 }
                 break;
 
             case true:
                 RCP_SetupDL(&gMasterDisp, SETUPDL_76);
                 gDPSetPrimColor(gMasterDisp++, 0x00, 0x00, 255, 255, 0, 255);
-                Graphics_DisplaySmallText(43 - 19, 106, 1.0f, 1.0f, "HELP!!");
-                Graphics_DisplaySmallText(SCREEN_WIDTH - 43 - 19, 106, 1.0f, 1.0f, "HELP!!");
+                Graphics_DisplaySmallText(14, 106, 1.0f, 1.0f, "HELP!!");
+                Graphics_DisplaySmallText(SCREEN_WIDTH - 14 - 44, 106, 1.0f, 1.0f, "HELP!!");
                 break;
         }
     }
@@ -863,7 +863,11 @@ void Display_PlayerEngineGlow_Draw(Player* player) {
         Matrix_Scale(gGfxMatrix, 0.9f * 0.9f, 0.9f * 0.63f, 1.0f, MTXF_APPLY);
     }
     Matrix_SetGfxMtx(&gMasterDisp);
-    Display_DrawEngineGlow(gLevelType);
+    if (gCurrentLevel == LEVEL_CORNERIA) {
+        Display_DrawEngineGlow(EG_BLUE);
+    } else {
+        Display_DrawEngineGlow(gLevelType);
+    }
     Matrix_Pop(&gGfxMatrix);
 }
 

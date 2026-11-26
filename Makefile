@@ -150,7 +150,7 @@ endif
 
 MAKE = make
 CPPFLAGS += -fno-dollars-in-identifiers -P
-LDFLAGS  := --no-check-sections --accept-unknown-input-arch --emit-relocs
+LDFLAGS := -m elf32btsmip --no-check-sections --accept-unknown-input-arch --emit-relocs
 
 UNAME_S := $(shell uname -s)
 UNAME_M := $(shell uname -m)

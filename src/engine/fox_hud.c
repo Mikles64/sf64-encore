@@ -204,7 +204,7 @@ void HUD_TeamDownWrench_Draw(s32 arg0) {
         }
     } else {
         Matrix_Push(&gGfxMatrix);
-        Matrix_Translate(gGfxMatrix, -234.0f, -167.0f, -600.0f, MTXF_APPLY);
+        Matrix_Translate(gGfxMatrix, -259.0f, -179.0f, -600.0f, MTXF_APPLY);
         Matrix_RotateZ(gGfxMatrix, M_PI / 4, MTXF_APPLY);
         Matrix_Scale(gGfxMatrix, 0.68f, 0.68f, 1.0f, MTXF_APPLY);
         Matrix_SetGfxMtx(&gMasterDisp);
@@ -311,8 +311,8 @@ void HUD_GoldRings_Draw(void) {
     };
     s32 i;
     s32 j;
-    f32 D_800D1AC4[] = { 0.0f, -30.0f, -26.0f, -22.0f, -18.0f };
-    f32 D_800D1AD8[] = { 0.0f, 28.0f, 28.0f, 28.0f, 28.0f };
+    f32 D_800D1AC4[] = { 0.0f, -33.45f, -29.45f, -25.45f, -21.45f };
+    f32 D_800D1AD8[] = { 0.0f, 30.76f, 30.76f, 30.76f, 30.76f };
     f32 scale;
     f32 x;
     f32 y;
@@ -2051,8 +2051,8 @@ s32 HUD_RadarMarks_Update(void) {
         switch (gCurrentLevel) {
             case LEVEL_SECTOR_Z:
                 temp2 = 20000.0f;
-                y1 = -360.0f;
-                x1 = 542.0f;
+                y1 = -398.0f;
+                x1 = 575.0f;
                 z1 = -1584.0f;
                 temp3 = 7.5f;
                 scale = 0.02f;
@@ -2060,8 +2060,8 @@ s32 HUD_RadarMarks_Update(void) {
 
             case LEVEL_CORNERIA:
                 temp2 = 8000.0f;
-                y1 = -142.0f;
-                x1 = 214.0f;
+                y1 = -157.0f;
+                x1 = 227.0f;
                 z1 = -626.0f;
                 temp3 = 3.0f;
                 scale = 0.008f;
@@ -2069,8 +2069,8 @@ s32 HUD_RadarMarks_Update(void) {
 
             case LEVEL_BOLSE:
                 temp2 = 10000.0f;
-                y1 = -178.0f;
-                x1 = 268.0f;
+                y1 = -197.0f;
+                x1 = 284.0f;
                 z1 = -784.0f;
                 temp3 = 3.7f;
                 scale = 0.01f;
@@ -2078,16 +2078,16 @@ s32 HUD_RadarMarks_Update(void) {
 
             default:
                 temp2 = 12500.0f;
-                y1 = -220.0f;
-                x1 = 330.0f;
+                y1 = -243.0f;
+                x1 = 350.0f;
                 z1 = -970.0f;
                 temp3 = 4.7f;
                 scale = 0.013f;
                 break;
         }
 
-        x = 254.000f + D_800D1E10;
-        y = 162.000f;
+        x = 260.000f + D_800D1E10;
+        y = 169.000f;
         x1 += D_800D1E10 * temp3;
     } else {
         if (!gVsMatchStart || gVsMatchOver) {
@@ -2113,40 +2113,40 @@ s32 HUD_RadarMarks_Update(void) {
 
         switch (gCurrentLevel) {
             case LEVEL_SECTOR_Z:
-                Lib_TextureRect_IA8(&gMasterDisp, aSzGreatFoxRadarMark, 16, 9, 251.0f + D_800D1E10, 181.0f, 1.00f,
+                Lib_TextureRect_IA8(&gMasterDisp, aSzGreatFoxRadarMark, 16, 9, 257.0f + D_800D1E10, 188.0f, 1.00f,
                                     1.00f);
                 break;
 
             case LEVEL_FORTUNA:
-                Lib_TextureRect_IA8(&gMasterDisp, aFoBaseRadarMarkTex, 16, 16, 251.0f + D_800D1E10, 178.0f, 1.00f,
+                Lib_TextureRect_IA8(&gMasterDisp, aFoBaseRadarMarkTex, 16, 16, 257.0f + D_800D1E10, 185.0f, 1.00f,
                                     1.00f);
                 break;
 
             case LEVEL_BOLSE:
-                Lib_TextureRect_IA8(&gMasterDisp, aBoDefenseOutpostRadarMarkTex, 16, 16, 251.0f + D_800D1E10, 178.0f,
+                Lib_TextureRect_IA8(&gMasterDisp, aBoDefenseOutpostRadarMarkTex, 16, 16, 257.0f + D_800D1E10, 185.0f,
                                     1.00f, 1.00f);
                 break;
 
             case LEVEL_SECTOR_Y:
                 if ((fabsf(gScenery360[0].obj.pos.x) < temp2 + 1000.0f) &&
                     (fabsf(gScenery360[0].obj.pos.z) < temp2 + 1000.0f)) {
-                    temp = 150.0f + ((12500.0f + gScenery360[0].obj.pos.z) / 446.42f);
+                    temp = 157.0f + ((12500.0f + gScenery360[0].obj.pos.z) / 446.42f);
 
-                    if ((y < 150.0f) || (y > 206.0f)) {
+                    if ((y < 157.0f) || (y > 213.0f)) {
                         break;
                     }
-                    Lib_TextureRect_IA8(&gMasterDisp, aSySaruzinRadarMark, 64, 64, 250.0f + D_800D1E10, temp, 0.25f,
+                    Lib_TextureRect_IA8(&gMasterDisp, aSySaruzinRadarMark, 64, 64, 256.0f + D_800D1E10, temp, 0.25f,
                                         0.25f);
                 }
                 break;
 
             case LEVEL_KATINA:
-                Lib_TextureRect_IA8(&gMasterDisp, aKaFLBaseRadarMarkTex, 8, 8, 254.0f + D_800D1E10, 182.0f, 1.00f,
+                Lib_TextureRect_IA8(&gMasterDisp, aKaFLBaseRadarMarkTex, 8, 8, 260.0f + D_800D1E10, 189.0f, 1.00f,
                                     1.00f);
                 break;
 
             case LEVEL_VENOM_2:
-                Lib_TextureRect_IA8(&gMasterDisp, aVe2EntranceRadarMarkTex, 16, 16, 251.0f + D_800D1E10, 178.0f, 1.00f,
+                Lib_TextureRect_IA8(&gMasterDisp, aVe2EntranceRadarMarkTex, 16, 16, 257.0f + D_800D1E10, 185.0f, 1.00f,
                                     1.00f);
                 break;
         }
@@ -2229,47 +2229,47 @@ void HUD_RadioCharacterName_Draw(void) {
 
         switch ((s32) gRadioMsgRadioId) {
             case RCID_FOX:
-                Graphics_DisplaySmallText(73, 173, 1.0f, 1.0f, "FOX");
+                Graphics_DisplaySmallText(61, 179, 1.0f, 1.0f, "FOX");
                 break;
 
             case RCID_FALCO:
-                Graphics_DisplaySmallText(73, 173, 1.0f, 1.0f, "FALCO");
+                Graphics_DisplaySmallText(61, 179, 1.0f, 1.0f, "FALCO");
                 break;
 
             case RCID_SLIPPY:
-                Graphics_DisplaySmallText(73, 173, 1.0f, 1.0f, "SLIPPY");
+                Graphics_DisplaySmallText(61, 179, 1.0f, 1.0f, "SLIPPY");
                 break;
 
             case RCID_PEPPY:
-                Graphics_DisplaySmallText(73, 173, 1.0f, 1.0f, "PEPPY");
+                Graphics_DisplaySmallText(61, 179, 1.0f, 1.0f, "PEPPY");
                 break;
 
             case RCID_WOLF:
             case RCID_WOLF_2:
-                Graphics_DisplaySmallText(73, 173, 1.0f, 1.0f, "WOLF");
+                Graphics_DisplaySmallText(61, 179, 1.0f, 1.0f, "WOLF");
                 break;
 
             case RCID_LEON:
             case RCID_LEON_2:
-                Graphics_DisplaySmallText(73, 173, 1.0f, 1.0f, "LEON");
+                Graphics_DisplaySmallText(61, 179, 1.0f, 1.0f, "LEON");
                 break;
 
             case RCID_PIGMA:
             case RCID_PIGMA_2:
-                Graphics_DisplaySmallText(73, 173, 1.0f, 1.0f, "PIGMA");
+                Graphics_DisplaySmallText(61, 179, 1.0f, 1.0f, "PIGMA");
                 break;
 
             case RCID_ANDREW:
             case RCID_ANDREW_2:
-                Graphics_DisplaySmallText(73, 173, 1.0f, 1.0f, "ANDREW");
+                Graphics_DisplaySmallText(61, 179, 1.0f, 1.0f, "ANDREW");
                 break;
 
             case RCID_BILL:
-                Graphics_DisplaySmallText(73, 173, 1.0f, 1.0f, "BILL");
+                Graphics_DisplaySmallText(61, 179, 1.0f, 1.0f, "BILL");
                 break;
 
             case RCID_KATT:
-                Graphics_DisplaySmallText(73, 173, 1.0f, 1.0f, "KATT");
+                Graphics_DisplaySmallText(61, 179, 1.0f, 1.0f, "KATT");
                 break;
         }
     }
@@ -2313,7 +2313,7 @@ void HUD_IncomingMsg_Update(void) {
 
 void HUD_IncomingMsg_Draw(void) {
     f32 xPos = 142.0f;
-    f32 yPos = 18.0f;
+    f32 yPos = 10.0f;
 
     RCP_SetupDL(&gMasterDisp, SETUPDL_78);
     gDPSetPrimColor(gMasterDisp++, 0, 0, 255, 255, 255, 255);
@@ -2424,7 +2424,7 @@ void HUD_PlayerShieldGauge_Draw(f32 x, f32 y) {
 
 void HUD_PlayerShield_GoldRings(void) {
     HUD_PlayerShieldGauge_Update();
-    HUD_PlayerShieldGauge_Draw(20.0f, 18.0f);
+    HUD_PlayerShieldGauge_Draw(10.0f, 10.0f);
     HUD_GoldRings_Draw();
 }
 
@@ -2601,7 +2601,7 @@ void HUD_RadioDamage_Draw(void) {
         RCP_SetupDL(&gMasterDisp, SETUPDL_12);
         gDPSetPrimColor(gMasterDisp++, 0, 0, r, g, b, alpha);
         Matrix_Push(&gGfxMatrix);
-        Matrix_Translate(gGfxMatrix, -53.9f, -38.5f, -139.4f, MTXF_APPLY);
+        Matrix_Translate(gGfxMatrix, -59.7f, -41.4f, -139.4f, MTXF_APPLY);
         Matrix_Scale(gGfxMatrix, 1.0f, 1.0f, 1.0f, MTXF_APPLY);
         Matrix_SetGfxMtx(&gMasterDisp);
         gSPDisplayList(gMasterDisp++, sRadioDamageDL);
@@ -3123,10 +3123,10 @@ void HUD_DrawBossHealth(void) {
             D_801616BC = 255.0f;
         }
 
-        Math_SmoothStepToF(&D_801616C0, 25.0f, 0.3f, 4.0f, 4.0f);
+        Math_SmoothStepToF(&D_801616C0, 10.0f, 0.3f, 4.0f, 4.0f);
 
         sp3C = D_801616C0;
-        temp1 = 52.0f;
+        temp1 = 44.0f;
         temp2 = sp3C + 5.0f;
         temp3 = temp1 + 3.0f;
         temp4 = sp3C + 6.0f;
@@ -3139,11 +3139,11 @@ void HUD_DrawBossHealth(void) {
         RCP_SetupDL(&gMasterDisp, SETUPDL_76);
         Lib_TextureRect_IA8(&gMasterDisp, aBossTextFrameTex, 40, 12, sp3C, temp1, 1.0f, 1.0f);
 
-        if (sp3C >= 25.0f) {
+        if (sp3C >= 10.0f) {
             Math_SmoothStepToF(&D_801616C4, 0.88f, 0.3f, 0.2f, 0.1f);
         }
 
-        if ((D_801616C4 >= 0.1f) && (sp3C >= 25.0f)) {
+        if ((D_801616C4 >= 0.1f) && (sp3C >= 10.0f)) {
             RCP_SetupDL(&gMasterDisp, SETUPDL_78);
             gDPSetPrimColor(gMasterDisp++, 0, 0, 255, 255, 255, 255);
             Lib_TextureRect_CI8(&gMasterDisp, aBossHealthBarTex, aBossHealthBarTLUT, 16, 109, temp4, temp5, 1.0f,
@@ -3238,7 +3238,7 @@ void HUD_DrawCountdown(s32* countdown, f32 scale) {
     }
 
     if (gPlayState != PLAY_PAUSE) {
-        HUD_DisplayCountdown(176.0f, 22.0f, countdown, scale);
+        HUD_DisplayCountdown(176.0f, 14.0f, countdown, scale);
     }
 }
 
@@ -3570,16 +3570,16 @@ void HUD_SinglePlayer(void) {
 
     RCP_SetupDL_36();
     if ((gLevelMode != LEVELMODE_TURRET) && (D_hud_80161708 != 0)) {
-        HUD_BoostGauge_Draw(246.0f, 28.0f);
-        HUD_BombCounter_Draw(250.0f, 38.0f);
+        HUD_BoostGauge_Draw(262.0f, 26.0f);
+        HUD_BombCounter_Draw(264.0f, 36.0f);
     }
 
     HUD_IncomingMsg();
 
     if (D_hud_80161708 != 0) {
-        HUD_Shield_GoldRings_Score(24.0f, 30.0f);
+        HUD_Shield_GoldRings_Score(14.0f, 22.0f);
         if (gCurrentLevel != LEVEL_TRAINING) {
-            HUD_LivesCount2_Draw(248.0f, 11.0f, gLifeCount[gPlayerNum]);
+            HUD_LivesCount2_Draw(262.0f, 9.0f, gLifeCount[gPlayerNum]);
         }
     }
 

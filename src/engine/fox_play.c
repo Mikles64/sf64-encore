@@ -548,6 +548,21 @@ void Play_InitEnvironment(void) {
     gAmbientG = sEnvironment->ambG;
     gAmbientB = sEnvironment->ambB;
 
+    if (gCurrentLevel == LEVEL_CORNERIA) {
+        gBgColor = 0x0001;
+        gFogRed = 0;
+        gFogGreen = 0;
+        gFogBlue = 0;
+        gFogNear = 995;
+        gFogFar = 1000;
+        gLight1R = gLight2R = D_ctx_80161A70 = 120;
+        gLight1G = gLight2G = D_ctx_80161A74 = 120;
+        gLight1B = gLight2B = D_ctx_80161A78 = 160;
+        gAmbientR = 10;
+        gAmbientG = 12;
+        gAmbientB = 18;
+    }
+
     gEnvLightxRot = gLight2xRotTarget = D_ctx_80178520 = gLight1xRot = gLight1xRotTarget = sEnvironment->lightDir.x;
     gEnvLightyRot = gLight2yRotTarget = D_ctx_80178524 = gLight1yRot = gLight1yRotTarget = sEnvironment->lightDir.y;
     gEnvLightzRot = gLight2zRotTarget = D_ctx_80178528 = gLight1zRot = gLight1zRotTarget = sEnvironment->lightDir.z;
@@ -601,6 +616,10 @@ void Play_SetupStarfield(void) {
     if (gCurrentLevel == LEVEL_TRAINING) {
         gStarCount = 800;
         gGroundHeight = -0.0f;
+    }
+    if (gCurrentLevel == LEVEL_CORNERIA) {
+        gStarCount = 600;
+        gGroundHeight = 0.0f;
     }
 }
 
@@ -2775,9 +2794,11 @@ void Play_Init(void) {
     gGroundHeight = 0.0f;
     gStarWarpDistortion = gStarfieldX = gStarfieldY = gStarfieldRoll = gStarfieldScrollX = gStarfieldScrollY = 0.0f;
 
-    if ((gLevelType == LEVELTYPE_SPACE) || (gCurrentLevel == LEVEL_TRAINING)) {
+    if ((gLevelType == LEVELTYPE_SPACE) || (gCurrentLevel == LEVEL_TRAINING) || (gCurrentLevel == LEVEL_CORNERIA)) {
         Play_SetupStarfield();
-        if (gCurrentLevel != LEVEL_TRAINING) {
+        if (gCurrentLevel == LEVEL_CORNERIA) {
+            gGroundHeight = 0.0f;
+        } else if (gCurrentLevel != LEVEL_TRAINING) {
             gDrawGround = false;
         }
     } else {

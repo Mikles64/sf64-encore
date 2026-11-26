@@ -139,14 +139,14 @@ void Radio_PlayMessage(u16* msg, RadioCharacterId character) {
             gRadioPrintPosY = 184;
             gRadioPrintPosX = 76;
 #else
-            gRadioPrintPosY = 180;
-            gRadioPrintPosX = 79;
+            gRadioPrintPosY = 186;
+            gRadioPrintPosX = 67;
 #endif
-            gRadioTextBoxPosX = 74.0f;
-            gRadioTextBoxPosY = 178.0f;
+            gRadioTextBoxPosX = 62.0f;
+            gRadioTextBoxPosY = 184.0f;
             gRadioTextBoxScaleX = 4.53f;
-            gRadioPortraitPosX = 26.0f;
-            gRadioPortraitPosY = 178.0f;
+            gRadioPortraitPosX = 14.0f;
+            gRadioPortraitPosY = 184.0f;
             break;
     }
 
@@ -718,12 +718,12 @@ void Radio_Draw(void) {
                 (gCurrentRadioPortrait != RCID_1000)) {
                 RCP_SetupDL(&gMasterDisp, SETUPDL_76);
                 gDPSetPrimColor(gMasterDisp++, 0x00, 0x00, 255, 255, 0, 255);
-                Graphics_DisplaySmallText(31, 167, 1.0f, 1.0f, "DOWN");
+                Graphics_DisplaySmallText(19, 173, 1.0f, 1.0f, "DOWN");
                 HUD_TeamDownWrench_Draw(1);
             }
             if (((gCurrentRadioPortrait != RCID_STATIC) && (gCurrentRadioPortrait != RCID_STATIC + 1)) &&
                 (gCurrentRadioPortrait != RCID_1000)) {
-                HUD_TeamShields_Draw(22.0f, 165.0f, gTeamShields[idx]);
+                HUD_TeamShields_Draw(10.0f, 171.0f, gTeamShields[idx]);
             }
         }
 
@@ -763,11 +763,11 @@ void Radio_Draw(void) {
                 (gCurrentRadioPortrait != RCID_STATIC + 1) && (gCurrentRadioPortrait != RCID_1000)) {
                 RCP_SetupDL(&gMasterDisp, SETUPDL_76);
                 gDPSetPrimColor(gMasterDisp++, 0x00, 0x00, 255, 255, 0, 255);
-                Graphics_DisplaySmallText(31, 167, 1.0f, 1.0f, "DOWN");
+                Graphics_DisplaySmallText(19, 173, 1.0f, 1.0f, "DOWN");
             }
             if (((gCurrentRadioPortrait != RCID_STATIC) && (gCurrentRadioPortrait != RCID_STATIC + 1)) &&
                 (gCurrentRadioPortrait != RCID_1000)) {
-                HUD_TeamShields_Draw(22.0f, 165.0f, gActors[idx].health * 2.55f);
+                HUD_TeamShields_Draw(10.0f, 171.0f, gActors[idx].health * 2.55f);
             }
         }
         if (((gCurrentRadioPortrait != RCID_STATIC) && (gCurrentRadioPortrait != RCID_STATIC + 1)) &&
@@ -990,11 +990,11 @@ void Radio_Draw(void) {
                 ((gCurrentRadioPortrait != 2) && (gCurrentRadioPortrait != 3) && (gCurrentRadioPortrait != 1000))) {
                 RCP_SetupDL(&gMasterDisp, SETUPDL_76);
                 gDPSetPrimColor(gMasterDisp++, 0x00, 0x00, 255, 255, 0, 255);
-                Graphics_DisplaySmallText(31.0f, 167.0f, 1.0f, 1.0f, "DOWN");
+                Graphics_DisplaySmallText(19.0f, 173.0f, 1.0f, 1.0f, "DOWN");
                 HUD_TeamDownWrench_Draw(1);
             }
             if ((gCurrentRadioPortrait != 2) && (gCurrentRadioPortrait != 3) && (gCurrentRadioPortrait != 1000)) {
-                HUD_TeamShields_Draw(22.0f, 165.0f, gTeamShields[idx]);
+                HUD_TeamShields_Draw(10.0f, 171.0f, gTeamShields[idx]);
             }
         }
 
@@ -1034,11 +1034,11 @@ void Radio_Draw(void) {
                 (gCurrentRadioPortrait != 3) && (gCurrentRadioPortrait != 1000)) {
                 RCP_SetupDL(&gMasterDisp, SETUPDL_76);
                 gDPSetPrimColor(gMasterDisp++, 0x00, 0x00, 255, 255, 0, 255);
-                Graphics_DisplaySmallText(31.0f, 167.0f, 1.0f, 1.0f, "DOWN");
+                Graphics_DisplaySmallText(19.0f, 173.0f, 1.0f, 1.0f, "DOWN");
             }
 
             if ((gCurrentRadioPortrait != 2) && (gCurrentRadioPortrait != 3) && (gCurrentRadioPortrait != 1000)) {
-                HUD_TeamShields_Draw(22.0f, 165.0f, (s32) ((f32) gActors[idx].health * 2.55f));
+                HUD_TeamShields_Draw(10.0f, 171.0f, (s32) ((f32) gActors[idx].health * 2.55f));
             }
         }
         if ((gCurrentRadioPortrait != 2) && (gCurrentRadioPortrait != 3) && (gCurrentRadioPortrait != 1000)) {

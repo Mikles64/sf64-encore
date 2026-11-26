@@ -528,7 +528,11 @@ void Actor_DrawEngineAndContrails(Actor* this) {
         Matrix_RotateY(gGfxMatrix, -gPlayer[gPlayerNum].camYaw, MTXF_APPLY);
         Matrix_RotateX(gGfxMatrix, gPlayer[gPlayerNum].camPitch, MTXF_APPLY);
         Matrix_SetGfxMtx(&gMasterDisp);
-        Display_DrawEngineGlow(gLevelType);
+        if (gCurrentLevel == LEVEL_CORNERIA) {
+            Display_DrawEngineGlow(EG_BLUE);
+        } else {
+            Display_DrawEngineGlow(gLevelType);
+        }
         Matrix_Pop(&gGfxMatrix);
     }
 

@@ -340,7 +340,6 @@ void Background_DrawBackdrop(void) {
                     }
                     break;
 
-                case LEVEL_CORNERIA:
                 case LEVEL_VENOM_1:
                     bgYpos = (gPlayer[gPlayerNum].camPitch * -6000.0f) - (gPlayer[gPlayerNum].cam.eye.y * 0.6f);
                     bgXpos2 =
@@ -348,27 +347,11 @@ void Background_DrawBackdrop(void) {
                     Matrix_RotateZ(gGfxMatrix, gPlayer[gPlayerNum].camRoll * M_DTOR, MTXF_APPLY);
                     Matrix_Translate(gGfxMatrix, bgXpos2, -2000.0f + bgYpos, -6000.0f, MTXF_APPLY);
                     Matrix_SetGfxMtx(&gMasterDisp);
-
-                    switch (gCurrentLevel) {
-                        case LEVEL_CORNERIA:
-                            gSPDisplayList(gMasterDisp++, aCoBackdropDL);
-                            break;
-                        case LEVEL_VENOM_1:
-                            gSPDisplayList(gMasterDisp++, aVe1BackdropDL);
-                            break;
-                    }
+                    gSPDisplayList(gMasterDisp++, aVe1BackdropDL);
 
                     Matrix_Translate(gGfxMatrix, 7280.0f, 0.0f, 0.0f, MTXF_APPLY);
                     Matrix_SetGfxMtx(&gMasterDisp);
-
-                    switch (gCurrentLevel) {
-                        case LEVEL_CORNERIA:
-                            gSPDisplayList(gMasterDisp++, aCoBackdropDL);
-                            break;
-                        case LEVEL_VENOM_1:
-                            gSPDisplayList(gMasterDisp++, aVe1BackdropDL);
-                            break;
-                    }
+                    gSPDisplayList(gMasterDisp++, aVe1BackdropDL);
                     break;
 
                 case LEVEL_VENOM_ANDROSS:
@@ -737,7 +720,7 @@ void Background_DrawSun(void) {
     s32 levelType = gLevelType;
 
     if ((gCurrentLevel == LEVEL_KATINA) || (gCurrentLevel == LEVEL_VENOM_2) || (gCurrentLevel == LEVEL_VENOM_ANDROSS) ||
-        (gCurrentLevel == LEVEL_SOLAR) || (gCurrentLevel == LEVEL_TRAINING) || gVersusMode) {
+        (gCurrentLevel == LEVEL_SOLAR) || (gCurrentLevel == LEVEL_TRAINING) || (gCurrentLevel == LEVEL_CORNERIA) || gVersusMode) {
         return;
     }
 
@@ -970,6 +953,8 @@ void Background_DrawGround(void) {
                 RCP_SetupDL_20(gFogRed, gFogGreen, gFogBlue, gFogAlpha, gFogNear, gFogFar);
             }
 
+            gBgColor = 0x000;
+
             if (gLevelMode == LEVELMODE_ON_RAILS) {
                 gDPSetTextureImage(gMasterDisp++, G_IM_FMT_RGBA, G_IM_SIZ_16b, 1,
                                    SEGMENTED_TO_VIRTUAL(aCoGroundGrassTex));
@@ -981,19 +966,19 @@ void Background_DrawGround(void) {
                              G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMIRROR | G_TX_WRAP, 5, 5, G_TX_NOLOD, G_TX_NOLOD);
 
                 switch (gGroundSurface) {
-                    case SURFACE_GRASS:
+          case SURFACE_GRASS:
                         gDPLoadTileTexture(gMasterDisp++, aCoGroundGrassTex, G_IM_FMT_RGBA, G_IM_SIZ_16b, 32, 32);
-                        gBgColor = 0x845; // 8, 8, 32
+                        //gBgColor = 0x845; // 8, 8, 32
                         break;
                     case SURFACE_ROCK:
                         gDPLoadTileTexture(gMasterDisp++, aCoGroundRockTex, G_IM_FMT_RGBA, G_IM_SIZ_16b, 32, 32);
-                        gBgColor = 0x845; // 8, 8, 32
+                        //gBgColor = 0x845; // 8, 8, 32
                         break;
                     case SURFACE_WATER:
                         RCP_SetupDL_45(gFogRed, gFogGreen, gFogBlue, gFogAlpha, gFogNear, gFogFar);
                         gDPSetPrimColor(gMasterDisp++, 0x00, 0x00, 255, 255, 255, 128);
                         gDPLoadTileTexture(gMasterDisp++, aCoWaterTex1, G_IM_FMT_RGBA, G_IM_SIZ_16b, 32, 32);
-                        gBgColor = 0x190F; // 24, 32, 56
+                        //gBgColor = 0x190F; // 24, 32, 56
                         break;
                 }
                 Matrix_Push(&gGfxMatrix);
@@ -1008,7 +993,7 @@ void Background_DrawGround(void) {
                 gSPDisplayList(gMasterDisp++, aCoGroundOnRailsDL);
             } else {
                 gGroundSurface = SURFACE_GRASS;
-                gBgColor = 0x845; // 8, 8, 32
+                // gBgColor = 0x845; // 8, 8, 32
                 for (i = 0; i < ARRAY_COUNT(sGroundPositions360x); i++) {
                     Matrix_Push(&gGfxMatrix);
                     Matrix_Translate(gGfxMatrix, sGroundPositions360x[i], 0.0f, sGroundPositions360z[i], MTXF_APPLY);
